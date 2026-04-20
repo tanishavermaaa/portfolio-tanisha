@@ -68,9 +68,9 @@ const Hero = () => {
             custom={2}
             initial="hidden"
             animate="show"
-            className="text-lg md:text-2xl text-foreground/80 max-w-3xl mx-auto leading-relaxed mb-5 font-light"
+            className="text-base md:text-2xl text-foreground/80 max-w-3xl mx-auto leading-relaxed mb-5 font-light"
           >
-            I build impactful digital experiences with clean design and powerful backend systems.
+            Blending logic and design into living products
           </motion.p>
 
           <motion.p
@@ -78,7 +78,7 @@ const Hero = () => {
             custom={3}
             initial="hidden"
             animate="show"
-            className="text-sm md:text-base text-muted-foreground mb-10 tracking-wide"
+            className="text-xs md:text-base text-muted-foreground mb-10 tracking-wide"
           >
             Final-year IT Student <span className="text-primary-glow/60 mx-2">•</span> MERN Stack Developer
             <span className="text-primary-glow/60 mx-2">•</span> Creative Designer
