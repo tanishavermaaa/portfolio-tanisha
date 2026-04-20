@@ -35,6 +35,9 @@ const Hero = () => {
       {/* Gradient overlays */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/40 via-background/60 to-background" />
 
+      {/* Aurora */}
+      <div className="aurora -z-10" />
+
       {/* Floating orbs */}
       <div className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-primary/20 blur-[120px] animate-float-slow -z-10" />
       <div className="absolute top-1/3 -right-40 w-[600px] h-[600px] rounded-full bg-accent/20 blur-[140px] animate-float-medium -z-10" />
@@ -70,7 +73,7 @@ const Hero = () => {
             animate="show"
             className="text-base md:text-2xl text-foreground/80 max-w-3xl mx-auto leading-relaxed mb-5 font-light"
           >
-            Blending logic and design into living products
+            Blending logic and design into living products<span className="inline-block w-[2px] h-5 md:h-7 ml-1 align-middle bg-primary-glow animate-blink" />
           </motion.p>
 
           <motion.p
@@ -93,7 +96,7 @@ const Hero = () => {
           >
             <button
               onClick={() => scrollTo("#projects")}
-              className="group relative inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-gradient-primary text-primary-foreground font-medium shadow-elegant hover:shadow-glow-primary transition-all duration-500 ease-smooth hover:-translate-y-0.5"
+              className="magnetic group relative inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-gradient-primary text-primary-foreground font-medium shadow-elegant hover:shadow-glow-primary transition-all duration-500 ease-smooth"
             >
               View My Work
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
