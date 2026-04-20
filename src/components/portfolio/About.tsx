@@ -3,7 +3,7 @@ import portrait from "@/assets/about-portrait.jpg";
 
 const paragraphs = [
   "I have always been drawn to both creativity and technology. While one side of me enjoys designing things that look beautiful and feel intuitive, the other side loves building systems that work smoothly behind the scenes. That combination naturally led me into full-stack development.",
-  "As a final-year B.Tech IT student, I enjoy turning ideas into real digital experiences — from designing user interfaces to building backend logic and connecting everything into a complete product. I am especially interested in projects that solve practical problems, improve workflows, and create better user experiences.",
+  "As a final-year B.Tech IT student, I enjoy turning ideas into real digital experiences - from designing user interfaces to building backend logic and connecting everything into a complete product. I am especially interested in projects that solve practical problems, improve workflows, and create better user experiences.",
   "For me, development is not only about writing code. It is about creating something useful, thoughtful, and impactful. I enjoy learning, experimenting, and building products that are clean, modern, and meaningful.",
 ];
 
