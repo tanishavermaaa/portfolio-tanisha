@@ -24,6 +24,12 @@ const Footer = () => {
               <a
                 key={label}
                 href={href}
+                onClick={(e) => {
+                  if (href.startsWith("mailto:")) {
+                    e.preventDefault();
+                    window.location.href = href;
+                  }
+                }}
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
                 aria-label={label}

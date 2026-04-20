@@ -57,6 +57,10 @@ const Contact = () => {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, delay: 0.2 }}
             href="mailto:tanishavermaa4@gmail.com?subject=Lets%20work%20together"
+            onClick={(e) => {
+              e.preventDefault();
+              window.location.href = "mailto:tanishavermaa4@gmail.com?subject=Lets%20work%20together";
+            }}
             className="group relative z-10 cursor-pointer inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-primary text-primary-foreground font-medium shadow-elegant hover:shadow-glow-primary transition-all duration-500 ease-smooth hover:-translate-y-0.5 mb-16"
           >
             Get In Touch
@@ -70,6 +74,12 @@ const Contact = () => {
                 <motion.a
                   key={l.label}
                   href={l.href}
+                  onClick={(e) => {
+                    if (l.href.startsWith("mailto:")) {
+                      e.preventDefault();
+                      window.location.href = l.href;
+                    }
+                  }}
                   target={l.href.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 24 }}
