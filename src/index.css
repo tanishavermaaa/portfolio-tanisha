@@ -60,7 +60,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--foreground) / 0.1);
   }
 
   html, body {
