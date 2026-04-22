@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
 import SplitReveal from "./SplitReveal";
+import { useIsMobile } from "@/hooks/use-mobile";
 import tracker from "@/assets/project-tracker.jpg";
 import quiz from "@/assets/project-quiz.jpg";
 import restaurant from "@/assets/project-restaurant.jpg";
@@ -40,6 +41,7 @@ const projects = [
 const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useGSAP(
     () => {
@@ -47,14 +49,19 @@ const Projects = () => {
       const section = sectionRef.current;
       if (!track || !section) return;
 
+      gsap.set(track, { clearProps: "transform" });
+
       const mm = gsap.matchMedia();
 
       mm.add("(min-width: 768px)", () => {
-        const getScrollAmount = () => Math.max(0, track.scrollWidth - window.innerWidth);
+        const getScrollAmount = () => Math.max(0, track.scrollWidth - section.clientWidth);
+
+        if (getScrollAmount() === 0) return;
 
         const tween = gsap.to(track, {
           x: () => -getScrollAmount(),
           ease: "none",
+          overwrite: true,
         });
 
         const st = ScrollTrigger.create({
@@ -68,15 +75,25 @@ const Projects = () => {
           invalidateOnRefresh: true,
         });
 
+        const refresh = () => ScrollTrigger.refresh();
+        const images = Array.from(track.querySelectorAll("img"));
+        images.forEach((image) => image.addEventListener("load", refresh));
+        requestAnimationFrame(refresh);
+
         return () => {
+          images.forEach((image) => image.removeEventListener("load", refresh));
           st.kill();
           tween.kill();
+          gsap.set(track, { clearProps: "transform" });
         };
       });
 
-      return () => mm.revert();
+      return () => {
+        mm.revert();
+        gsap.set(track, { clearProps: "transform" });
+      };
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [isMobile] }
   );
 
   return (
@@ -97,15 +114,18 @@ const Projects = () => {
       </div>
 
       {/* Horizontal pinned track */}
-      <div className="overflow-hidden">
-        <div ref={trackRef} className="flex gap-8 md:gap-16 pl-6 md:pl-10 pr-[20vw] py-8 will-change-transform">
+      <div className="overflow-visible md:overflow-hidden">
+        <div
+          ref={trackRef}
+          className="flex flex-col md:flex-row gap-8 md:gap-16 px-6 md:pl-10 md:pr-[20vw] py-8 will-change-transform"
+        >
           {projects.map((p) => (
             <a
               key={p.n}
               href={p.repo}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative shrink-0 w-[85vw] md:w-[55vw] lg:w-[42vw]"
+              className="group relative shrink-0 w-full md:w-[55vw] lg:w-[42vw]"
             >
               <div className="relative aspect-[4/3] overflow-hidden rounded-sm bg-background/5">
                 <img
@@ -130,7 +150,7 @@ const Projects = () => {
           ))}
 
           {/* End card */}
-          <div className="shrink-0 w-[60vw] md:w-[35vw] flex items-center">
+          <div className="shrink-0 w-full md:w-[35vw] flex items-center">
             <div>
               <p className="eyebrow text-background/60 mb-4">— End of selection</p>
               <p className="display text-4xl md:text-5xl text-balance">
