@@ -37,12 +37,6 @@ This portfolio is inspired by minimalist Swiss design which focuses on readabili
 
 ---
 
-## 📂 Project Structure
-
-├── public/ # Static assets (Favicons, etc.) ├── src/ │ ├── assets/ # Project mockup images, portraits │ ├── components/ # Reusable structural components │ │ ├── portfolio/ # Core sections: Hero, About, Projects, Skills, Experience │ │ └── ui/ # Radix & primitive UI elements │ ├── hooks/ # Custom React hooks (e.g. mobile detect) │ ├── lib/ # Utility modules (cn tailwind merge) │ ├── pages/ # Index and 404 pages │ ├── App.tsx # Main router │ ├── index.css # Tailwind base, custom layers, and scroll configuration │ └── main.tsx # DOM mounting ├── index.html # Main entry HTML, head SEO titles ├── package.json # Scripts & dependencies └── vite.config.ts # Bundler configuration
-
-
----
 
 ## 💻 Getting Started
 
@@ -58,21 +52,21 @@ Clone the repository and install the dependencies:
 git clone https://github.com/tanishavermaaa/portfolio-tanisha.git
 cd portfolio-tanisha
 npm install
+```
 
 Running Locally
 To launch the local development server:
 
-bash
+```bash
 npm run dev
 The application will run on http://localhost:8080/.
+```
 
 Building for Production
 To build the production bundle:
 
-bash
+```bash
 npm run build
 This compiles TypeScript, bundles files using Vite, and outputs optimized assets to the dist/ folder.
+```
 
-🤝 Connect
-GitHub: github.com/tanishavermaaa
-LeetCode: leetcode.com/tanishavermaaa
